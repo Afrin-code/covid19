@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:black" >
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Covid19</h2>
+            <table border=1 id="#box">
+            <tr>
+            <td> No</td>
+            <td><input id="first" name="No" type="number"></td>
+            </tr>
+            <tr>
+            <td>Gender (Female:0,Male:1)</td>
+            <td><input id="second" name="Gender" required="required"></td>
+            </tr>
+            <tr>
+            <td> Age_Bracket</td>
+            <td><input id="third" name="Age_Bracket" required="required"></td>
+            </tr>
+            <tr>
+            <td>Num_Cases</td>
+            <td><input id="fourth" name="Num_Cases" required="required"></td>
+            </tr>
+            <tr>
+            <td>Detected_City('Hyderabad':748, 'Gurugram':689, 'Agra':22, 'Puna':1558, 'Mumbai':1284,
+			    'Thrissur': 2017,'Nagpur':1315,'Pimpri-Chinchwad':1526,'Kalyan-Dombivali':866,
+                 'Bhilwara':316,'Thane':1999  ,'Perundurai':1511,'Sangli':1789,'Ahmednagar':27)</td>
+            <td><input id="fifth" name="Detected_City" required="required"></td>
+            </tr>
+            <tr>
+            <td>Detected_District('Pune':539,'Mumbai':446,'Sangli':595,'Thane':519
+			    'Indore' :267,'Nagpur':461,'Hyderabad':263 ,'Tirunelveli':684 ,'Chennai':131 
+				'Coimbatore':144,'Ahmednagar':6)</td>
+            <td><input id="sixth" name="Detected_District" required="required"></td>
+            </tr>
+            <tr>
+            <td>Day</td>
+            <td><input id="seventh" name="Day" required="required"></td>
+            </tr>
+            <tr>
+			<td>Month(0-7)</td>
+			<td><input id="eighth" name="Month" required="required"></td>
+			</tr>
+			<tr>
+			<td>Year(2020)</td>
+			<td><input id="nine" name="Year" required="required"></td>
+			</tr>
+			<tr>
+            <td>Detected_State(0-36) </td>
+            <td><input id="tenth" name="Detected_State" required="required"></td>
+            </tr>
+            <tr>
+             <td><button id="sub" type="submit" name="submit" value="Predict">Predict</button></td>
+            </table>
+        </form>
+        <br><h3>{{ prediction_text }}<h3>
+    </div>
+	
+	<style>
+		body {
+			background-image: url("../static/images/image.jpg");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%
+			}
+	</style>
+
+
+
+    <style>
+        body {
+            background-color: transparent;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 28px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: transparent;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: transparent;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: transparent;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#fifth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#sixth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#seventh {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#eighth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#ninth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#tenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#eleventh {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#twelveth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#thirteenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#fourteenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#sub {
+            border-radius: 10px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		
+    </style>
+</body>
+
+</html>
